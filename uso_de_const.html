@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>2. Uso de const</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>2. Uso de <code>const</code></h1>
+
+  <section>
+    <h2>Teste A – Reatribuição de constante</h2>
+    <p>Digite um novo valor para <code>PI</code>:</p>
+    <input type="text" id="novoPI" placeholder="Ex: 3.14">
+    <button onclick="testarPI()">Testar alteração</button>
+    <p id="mensagemPI"></p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Teste B – Declaração sem valor</h2>
+    <p>Clique para testar a declaração de uma constante sem valor inicial:</p>
+    <button onclick="testarSemanas()">Testar declaração</button>
+    <p id="mensagemSemanas"></p>
+  </section>
+
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function testarPI() {
+      const PI = 3.14159;
+      let novoValor = document.getElementById("novoPI").value;
+      let mensagem = "";
+
+      try {
+        // Simulando tentativa de reatribuição
+        eval("PI = " + parseFloat(novoValor));
+      } catch (erro) {
+        mensagem = `❌ Erro: Não é possível alterar o valor de uma constante. PI permanece como ${PI}.`;
+        console.error("Erro ao tentar alterar PI:", erro.message);
+      }
+
+      document.getElementById("mensagemPI").innerText = mensagem;
+    }
+
+    function testarSemanas() {
+      let mensagem = "";
+
+      try {
+        eval("const SemanasDoAno; SemanasDoAno = 52;");
+      } catch (erro) {
+        mensagem = "❌ Erro: Constantes devem ser inicializadas no momento da declaração.";
+        console.error("Erro ao declarar SemanasDoAno:", erro.message);
+      }
+
+      document.getElementById("mensagemSemanas").innerText = mensagem;
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

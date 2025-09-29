@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>14. Método em Objeto</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>14. Método em Objeto</h1>
+
+  <p>Clique no botão abaixo para criar o objeto <code>carro</code> com método <code>descricao()</code>:</p>
+  <button onclick="mostrarDescricao()">Executar</button>
+
+  <p id="mensagem">Abra o console do navegador para ver a descrição do carro.</p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function mostrarDescricao() {
+      const carro = {
+        marca: "Honda",
+        modelo: "Civic",
+        ano: 2024,
+        descricao: function() {
+          return `Marca: ${this.marca}, Modelo: ${this.modelo}, Ano: ${this.ano}`;
+        }
+      };
+
+      console.log(carro.descricao());
+      document.getElementById("mensagem").innerText = "✅ Método chamado! Veja a descrição no console.";
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

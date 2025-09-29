@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>8. Operador Ternário</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>8. Operador Ternário</h1>
+
+  <p>Clique no botão abaixo para informar um número:</p>
+  <button onclick="verificarNumero()">Verificar</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function verificarNumero() {
+      let numero = prompt("Digite um número:");
+      numero = parseFloat(numero);
+
+      if (isNaN(numero)) {
+        alert("Por favor, insira um número válido.");
+        return;
+      }
+
+      let mensagem = numero > 0
+        ? "Positivo"
+        : numero < 0
+        ? "Negativo"
+        : "Zero";
+
+      document.getElementById("resultado").innerText = `Resultado: ${mensagem}`;
+      console.log(`Resultado: ${mensagem}`);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

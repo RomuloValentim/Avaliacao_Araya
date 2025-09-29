@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>19. Encadeando Métodos</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>19. Encadeando Métodos: <code>filter</code> + <code>map</code></h1>
+
+  <p>Array original: <strong id="original">[2, 5, 8, 11, 14]</strong></p>
+  <button onclick="processarArray()">Executar</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    const numeros = [2, 5, 8, 11, 14];
+    document.getElementById("original").innerText = `[${numeros.join(", ")}]`;
+
+    function processarArray() {
+      const resultado = numeros
+        .filter(n => n > 5)
+        .map(n => n * 2);
+
+      document.getElementById("resultado").innerHTML = `Resultado final: <strong>[${resultado.join(", ")}]</strong>`;
+      console.log("Array original:", numeros);
+      console.log("Resultado após filter > 5 e map x2:", resultado);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>10. Contagem Regressiva com while</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>10. Contagem Regressiva com <code>while</code></h1>
+
+  <p>Clique no botão abaixo para executar a contagem regressiva de 10 até 1 no console:</p>
+  <button onclick="contagemRegressiva()">Executar</button>
+
+  <p id="mensagem">Abra o console do navegador para ver a contagem.</p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function contagemRegressiva() {
+      let numero = 10;
+      while (numero >= 1) {
+        console.log(numero);
+        numero--;
+      }
+      document.getElementById("mensagem").innerText = "✅ Contagem regressiva concluída! Veja no console.";
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

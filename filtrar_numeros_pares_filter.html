@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>17. Filtrar Números Pares com filter</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>17. Filtrar Números Pares com <code>filter</code></h1>
+
+  <p>Array original: <strong id="original">[10, 15, 20, 25, 30]</strong></p>
+  <button onclick="filtrarPares()">Filtrar pares</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    const numeros = [10, 15, 20, 25, 30];
+    document.getElementById("original").innerText = `[${numeros.join(", ")}]`;
+
+    function filtrarPares() {
+      const pares = numeros.filter(n => n % 2 === 0);
+
+      // Exibe na página
+      document.getElementById("resultado").innerHTML = `Números pares: <strong>[${pares.join(", ")}]</strong>`;
+
+      // Exibe no console
+      console.log("Array original:", numeros);
+      console.log("Números pares:", pares);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

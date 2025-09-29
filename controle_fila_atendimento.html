@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>21. Controle de Fila com Prioridade</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>21. Controle de Fila com Prioridade</h1>
+
+  <label for="nome">Nome da pessoa:</label>
+  <input type="text" id="nome" placeholder="Digite o nome">
+  <button onclick="entrarNaFila()">Entrar na fila</button>
+
+  <h3>Selecionar pessoa:</h3>
+  <select id="selecao"></select>
+  <button onclick="atenderSelecionado()">Atender selecionado</button>
+  <button onclick="priorizar()">Priorizar</button>
+
+  <h3>Fila atual:</h3>
+  <div id="filaAtual"></div>
+
+  <h3>Histórico de atendimentos:</h3>
+  <div id="historico"></div>
+
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    const fila = [];
+    const historico = [];
+
+    function formatarData(timestamp) {
+      return new Intl.DateTimeFormat("pt-BR", {
+        dateStyle: "short",
+        timeStyle: "medium"
+      }).format(timestamp);
+    }
+
+    function entrarNaFila() {
+      const nome = document.getElementById("nome").value.trim();
+      if (nome === "") {
+        alert("Digite um nome válido.");
+        return;
+      }
+
+      const entrada = Date.now();
+      fila.push({ nome, entrada, prioridade: false });
+
+      console.log(`✅ ${nome} entrou na fila às ${formatarData(entrada)}`);
+      atualizarExibicao();
+      document.getElementById("nome").value = "";
+    }
+
+    function atenderSelecionado() {
+      const selecionado = document.getElementById("selecao").value;
+      const index = fila.findIndex(p => p.nome === selecionado);
+
+      if (index === -1) {
+        alert("Selecione um nome válido.");
+        return;
+      }
+
+      const pessoa = fila.splice(index, 1)[0];
+      const atendimento = Date.now();
+      const tempoEspera = Math.floor((atendimento - pessoa.entrada) / 1000);
+
+      historico.push({
+        nome: pessoa.nome,
+        entrada: formatarData(pessoa.entrada),
+        atendimento: formatarData(atendimento),
+        tempo: `${tempoEspera} segundos`
+      });
+
+      console.log(`👤 ${pessoa.nome} foi atendido.`);
+      console.log(`⏱ Tempo de espera: ${tempoEspera} segundos`);
+      atualizarExibicao();
+    }
+
+    function priorizar() {
+      const selecionado = document.getElementById("selecao").value;
+      const index = fila.findIndex(p => p.nome === selecionado);
+
+      if (index === -1) {
+        alert("Selecione um nome válido.");
+        return;
+      }
+
+      fila[index].prioridade = true;
+
+      // Reordenar: prioridades primeiro, mantendo ordem de entrada
+      fila.sort((a, b) => {
+        if (a.prioridade === b.prioridade) {
+          return a.entrada - b.entrada;
+        }
+        return b.prioridade - a.prioridade;
+      });
+
+      console.log(`⭐ ${selecionado} foi priorizado.`);
+      atualizarExibicao();
+    }
+
+    function atualizarExibicao() {
+      // Fila atual
+      let filaHTML = "";
+      fila.forEach(p => {
+        filaHTML += `<p>${p.nome} - Entrada: ${formatarData(p.entrada)} ${p.prioridade ? "(Prioridade)" : ""}</p>`;
+      });
+      document.getElementById("filaAtual").innerHTML = filaHTML || "<p>Fila vazia.</p>";
+
+      // Histórico
+      let historicoHTML = "";
+      historico.forEach(h => {
+        historicoHTML += `<p>${h.nome} - Entrada: ${h.entrada} | Atendimento: ${h.atendimento} | Espera: ${h.tempo}</p>`;
+      });
+      document.getElementById("historico").innerHTML = historicoHTML || "<p>Nenhum atendimento realizado ainda.</p>";
+
+      // Atualizar seleção
+      const select = document.getElementById("selecao");
+      select.innerHTML = "";
+      fila.forEach(p => {
+        const option = document.createElement("option");
+        option.value = p.nome;
+        option.text = p.nome;
+        select.appendChild(option);
+      });
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

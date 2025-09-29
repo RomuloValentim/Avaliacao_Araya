@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>12. Percorrendo Arrays com for...of</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>12. Percorrendo Arrays com <code>for...of</code></h1>
+
+  <p>Clique no botão abaixo para listar as frutas no console:</p>
+  <button onclick="listarFrutas()">Listar frutas</button>
+
+  <p id="mensagem">Abra o console do navegador para ver a lista.</p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function listarFrutas() {
+      const frutas = [
+        "Maçã",
+        "Banana",
+        "Laranja",
+        "Uva",
+        "Melancia",
+        "Abacaxi",
+        "Manga",
+        "Pera",
+        "Kiwi",
+        "Morango"
+      ];
+
+      for (let fruta of frutas) {
+        console.log(fruta);
+      }
+
+      document.getElementById("mensagem").innerText = "✅ Frutas listadas no console!";
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

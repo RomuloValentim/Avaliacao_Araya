@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>16. Dobrar Valores com map</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>16. Dobrar Valores com <code>map</code></h1>
+
+  <p>Array original: <strong id="original">[1, 2, 3, 4, 5]</strong></p>
+  <button onclick="dobrarValores()">Dobrar valores</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    const numeros = [1, 2, 3, 4, 5];
+    document.getElementById("original").innerText = `[${numeros.join(", ")}]`;
+
+    function dobrarValores() {
+      const dobrados = numeros.map(n => n * 2);
+
+      // Exibe na página
+      document.getElementById("resultado").innerHTML = `Array dobrado: <strong>[${dobrados.join(", ")}]</strong>`;
+
+      // Exibe no console
+      console.log("Array original:", numeros);
+      console.log("Array dobrado:", dobrados);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

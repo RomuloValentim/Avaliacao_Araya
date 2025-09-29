@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>11. Percorrendo Objetos com for...in</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>11. Percorrendo Objetos com <code>for...in</code></h1>
+
+  <p>Clique no botão abaixo para listar as propriedades do objeto <code>pessoa</code>:</p>
+  <button onclick="listarPropriedades()">Listar</button>
+
+  <div id="resultado"></div>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function listarPropriedades() {
+      const pessoa = {
+        nome: "Romulo",
+        idade: 30,
+        cidade: "Brasília"
+      };
+
+      let resultadoHTML = "<h3>Propriedades do objeto:</h3>";
+      for (let propriedade in pessoa) {
+        let linha = `${propriedade}: ${pessoa[propriedade]}`;
+        resultadoHTML += `<p>${linha}</p>`;
+        console.log(linha);
+      }
+
+      document.getElementById("resultado").innerHTML = resultadoHTML;
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

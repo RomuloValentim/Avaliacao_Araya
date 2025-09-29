@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>5. Verificação de Idade</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>5. Verificação de Idade</h1>
+
+  <p>Clique no botão abaixo para informar sua idade:</p>
+  <button onclick="verificarIdade()">Verificar</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function verificarIdade() {
+      let idade = prompt("Qual sua idade?");
+      idade = parseInt(idade);
+
+      if (isNaN(idade)) {
+        alert("Por favor, insira um número válido.");
+        return;
+      }
+
+      let classificacao = "";
+
+      if (idade < 12) {
+        classificacao = "Criança";
+      } else if (idade >= 12 && idade <= 17) {
+        classificacao = "Adolescente";
+      } else {
+        classificacao = "Adulto";
+      }
+
+      let mensagem = `Classificação: ${classificacao}`;
+      document.getElementById("resultado").innerText = mensagem;
+      console.log(mensagem);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

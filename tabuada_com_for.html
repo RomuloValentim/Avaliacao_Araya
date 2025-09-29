@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>9. Tabuada com for</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>9. Tabuada com for</h1>
+
+  <p>Digite um número para ver sua tabuada de 1 a 10:</p>
+  <input type="number" id="numero" placeholder="Ex: 7">
+  <button onclick="gerarTabuada()">Gerar tabuada</button>
+
+  <div id="resultado"></div>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function gerarTabuada() {
+      let numero = parseInt(document.getElementById("numero").value);
+
+      if (isNaN(numero)) {
+        alert("Por favor, insira um número válido.");
+        return;
+      }
+
+      let resultadoHTML = `<h3>Tabuada do ${numero}</h3>`;
+      for (let i = 1; i <= 10; i++) {
+        let linha = `${numero} x ${i} = ${numero * i}`;
+        resultadoHTML += `<p>${linha}</p>`;
+        console.log(linha);
+      }
+
+      document.getElementById("resultado").innerHTML = resultadoHTML;
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>4. Diferença de Escopo</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>4. Diferença de Escopo</h1>
+
+  <p>Este exemplo mostra como a variável <code>let</code> tem escopo de bloco.</p>
+  <button onclick="executarEscopo()">Executar exemplo</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function executarEscopo() {
+      let resultado = "";
+
+      let numero = 10;
+      resultado += `Fora do bloco: numero = ${numero}<br>`;
+      console.log("Fora do bloco:", numero);
+
+      {
+        let numero = 20;
+        resultado += `Dentro do bloco: numero = ${numero}<br>`;
+        console.log("Dentro do bloco:", numero);
+      }
+
+      resultado += `Fora do bloco novamente: numero = ${numero}`;
+      console.log("Fora do bloco novamente:", numero);
+
+      document.getElementById("resultado").innerHTML = resultado;
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

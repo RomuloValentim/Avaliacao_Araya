@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>1. Declaração com let</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>1. Declaração com <code>let</code></h1>
+  <p>Digite sua idade atual:</p>
+  <input type="number" id="idadeInput" placeholder="Ex: 25">
+  <button onclick="calcularIdade()">Calcular</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function calcularIdade() {
+      let idade = parseInt(document.getElementById("idadeInput").value);
+      if (isNaN(idade)) {
+        alert("Por favor, insira um número válido.");
+        return;
+      }
+      let nova_idade = idade + 5;
+      let mensagem = `Minha idade hoje é ${idade} e daqui a 5 anos será ${nova_idade}`;
+      document.getElementById("resultado").innerText = mensagem;
+      console.log(mensagem);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

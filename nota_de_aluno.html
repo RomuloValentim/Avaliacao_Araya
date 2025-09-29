@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>7. Nota de Aluno</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>7. Nota de Aluno</h1>
+
+  <p>Clique no botão abaixo para informar a nota do aluno (de 0 a 10):</p>
+  <button onclick="verificarNota()">Verificar</button>
+
+  <p id="resultado"></p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function verificarNota() {
+      let nota = prompt("Digite a nota do aluno (0 a 10):");
+      nota = parseFloat(nota);
+
+      if (isNaN(nota) || nota < 0 || nota > 10) {
+        alert("Por favor, insira uma nota válida entre 0 e 10.");
+        return;
+      }
+
+      let status = "";
+
+      if (nota >= 7) {
+        status = "Aprovado";
+      } else if (nota >= 5) {
+        status = "Recuperação";
+      } else {
+        status = "Reprovado";
+      }
+
+      let mensagem = `Status do aluno: ${status}`;
+      document.getElementById("resultado").innerText = mensagem;
+      console.log(mensagem);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

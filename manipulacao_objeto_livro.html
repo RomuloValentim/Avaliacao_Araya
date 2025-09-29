@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>15. Manipulação de Propriedades</title>
+  <link rel="stylesheet" href="declaracao_com_let.css">
+</head>
+<body>
+  <h1>15. Manipulação de Propriedades</h1>
+
+  <p>Clique no botão abaixo para criar e modificar o objeto <code>livro</code>:</p>
+  <button onclick="manipularLivro()">Executar</button>
+
+  <p id="mensagem">Abra o console do navegador para ver o objeto atualizado.</p>
+  <button onclick="voltar()">Voltar para a página principal</button>
+
+  <script>
+    function manipularLivro() {
+      let livro = {
+        titulo: "Morte no Nilo",
+        autor: "Agatha Christie"
+      };
+
+      // Adiciona dinamicamente a propriedade ano
+      livro.ano = 1937;
+
+      // Altera o título
+      livro.titulo = "Assassinato no Expresso do Oriente";
+
+      // Exclui a propriedade autor
+      delete livro.autor;
+
+      console.log("Objeto livro atualizado:", livro);
+      document.getElementById("mensagem").innerText = "✅ Objeto modificado! Veja o resultado no console.";
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
